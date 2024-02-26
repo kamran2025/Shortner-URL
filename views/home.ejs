@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <!-- Bootstrap css  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap icons  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google fonts  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 100px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-dark text-white">
+  <h1 class="mb-5 fw-semibold">URL SHORTNER</h1>
+  <div class="mt-5">
+    <form class="" method="post" action="/url">
+      <label class="fw-semibold fs-5 mb-1">Enter Your Website Url</label>
+      <input class="form-control d-block p-2 " type="text" name="url" placeholder="https://example.com"
+        style="width: 350px;">
+      <button class="d-block mt-4 btn btn-success" type="submit">Generate</button>
+    </form>
+    <% if (locals.id) { %>
+      <p class="mt-5 bg-light border border-2 py-2 px-3 rounded-3 text-dark">http://localhost:3000/url/<%= id %></p>
+    <% } %>
+  </div>
+
+  <div class="mt-5 px-5">
+    <% if (locals.urls) { %>
+      <table class="table table-striped">
+        <thead>
+          <tr class="text-center table-info">
+            <th class="pe-5">SL. No</th>
+            <th class="px-5">Original Url</th>
+            <th class="ps-5">Clikcs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% urls.forEach((url, index)=> { %>
+            <tr class="table-dark table-striped">
+              <td class="text-start ps-4">
+                <%= index + 1 %>
+              </td>
+              <td class="text-center">
+                <%= url.redirectURL %>
+              </td> 
+              <td class="text-end pe-4">
+                <%= url.visitHistory.length %>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+  </div>
+
+  <!-- Bootstrap js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
