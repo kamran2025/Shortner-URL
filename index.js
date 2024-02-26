@@ -10,7 +10,7 @@ const urlRoute = require('./routes/url')
 const userRoute = require('./routes/user')
 
 const app = express()
-const PORT = 3000;
+const PORT = process.env.PORT || 8801;
 connectMongoDb("mongodb://127.0.0.1:27017/short-url")
 .then((res)=> console.log('Connected mongo db'))
 
