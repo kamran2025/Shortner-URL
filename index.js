@@ -11,7 +11,7 @@ const userRoute = require('./routes/user')
 
 const app = express()
 const PORT = process.env.PORT || 8801;
-connectMongoDb("mongodb://127.0.0.1:27017/short-url")
+connectMongoDb("mongodb+srv://kamranumar290:HFBGZXqhLpwRK8gx@cluster0.kmwzsep.mongodb.net/url-shortner")
 .then((res)=> console.log('Connected mongo db'))
 
 app.set('view engine', 'ejs')
