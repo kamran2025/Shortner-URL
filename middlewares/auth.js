@@ -13,7 +13,7 @@ const {getUser} = require('../service/auth')
 
 function restrictTo(roles) {
   return function(req, res, next) {
-    if(!req.user) return res.redirect('/login')
+    if(!req.user) return res.render('home')
 
     if(!roles.includes(req.user.role)) return res.end("UnAuthorized")
 
