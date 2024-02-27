@@ -14,7 +14,6 @@ const app = express()
 const PORT = process.env.PORT
 const databaseUrl = process.env.DATABASE_URI
 connectMongoDb(databaseUrl)
-.then((res)=> console.log('Connected mongo db'))
 
 app.set('view engine', 'ejs')
 app.set('views', path.resolve('./views'))
