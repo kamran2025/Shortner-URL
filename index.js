@@ -1,5 +1,6 @@
 const express = require('express')
 const {connectMongoDb} = require('./connect')
+require('dotenv').config()
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const {checkForAuthentication,} = require('./middlewares/auth')
@@ -10,8 +11,9 @@ const urlRoute = require('./routes/url')
 const userRoute = require('./routes/user')
 
 const app = express()
-const PORT = process.env.PORT || 8801;
-connectMongoDb("mongodb+srv://kamranumar290:HFBGZXqhLpwRK8gx@cluster0.kmwzsep.mongodb.net/url-shortner")
+const PORT = process.env.PORT
+const databaseUrl = process.env.DATABASE_URI
+connectMongoDb(databaseUrl)
 .then((res)=> console.log('Connected mongo db'))
 
 app.set('view engine', 'ejs')
